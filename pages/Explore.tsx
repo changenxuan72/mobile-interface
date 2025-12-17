@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search, Bell, Heart, Sparkles, Clock, Star, Trophy, PlayCircle, BookOpen, ChevronRight } from 'lucide-react';
 import { ExploreCategory } from '../types';
 import { EXPLORE_CATEGORIES, MOCK_POSTS, MOCK_JOBS, MOCK_PRODUCTS } from '../constants';
@@ -7,26 +8,27 @@ import JobDetailModal from '../components/JobDetailModal';
 import { Post, Job } from '../types';
 
 const Explore: React.FC = () => {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<ExploreCategory>(ExploreCategory.TALENTS);
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
   // Helper to render Masonry Grid for Posts (Talents & Following)
   const renderPostGrid = (posts: Post[]) => (
-    <div className="columns-2 md:columns-3 gap-3 space-y-3">
+    <div className="columns-2 md:columns-3 gap-3">
       {posts.map((post) => (
         <div 
           key={post.id} 
           onClick={() => setSelectedPost(post)}
-          className="break-inside-avoid group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer border border-gray-100"
+          className="mb-3 break-inside-avoid bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer border border-gray-100 group relative transform-gpu"
         >
-          {/* Image */}
-          <div className="relative overflow-hidden w-full">
+          {/* Image with Aspect Ratio Placeholder */}
+          <div className={`relative w-full bg-gray-100 ${post.aspectRatio}`}>
             <img 
               src={post.imageUrl} 
               alt={post.title} 
               loading="lazy"
-              className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+              className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
@@ -78,7 +80,10 @@ const Explore: React.FC = () => {
                 className="w-full bg-gray-100 text-gray-900 text-sm rounded-full py-2.5 pl-10 pr-4 outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all placeholder:text-gray-400"
               />
             </div>
-            <button className="relative p-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors">
+            <button 
+              onClick={() => navigate('/inbox')}
+              className="relative p-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+            >
               <Bell size={22} />
               <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
             </button>

@@ -14,7 +14,7 @@ const Inbox: React.FC = () => {
       {/* Header */}
       <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-100">
           <div className="max-w-screen-md mx-auto pt-8 px-4">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">訊息中心</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">通知中心</h1>
             
             {/* Tabs */}
             <div className="flex items-center gap-8 border-b border-gray-100">
