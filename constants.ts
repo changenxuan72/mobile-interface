@@ -1,4 +1,4 @@
-import { ExploreCategory, Post, Job, Product, ChatSession, Notification, Message, Review } from './types';
+import { ExploreCategory, Post, Job, Product, ChatSession, Notification, Message, Review, Talent } from './types';
 
 export const EXPLORE_CATEGORIES = [
   ExploreCategory.FOLLOWING,
@@ -113,6 +113,64 @@ export const MOCK_JOBS: Job[] = [
     matchRate: 88,
     category: '平面設計',
     postedAt: '1天前'
+  }
+];
+
+export const MOCK_TALENTS: Talent[] = [
+  {
+    id: 't1',
+    user: { id: 'u1', name: 'Alex Chen', avatar: 'https://picsum.photos/seed/u1/100/100', isOpenForWork: true, rating: 4.9 },
+    title: '資深 UI/UX 設計師',
+    bio: '專注於極簡主義與用戶體驗設計，擁有 5 年以上設計經驗，曾服務於多家科技新創。',
+    skills: ['Figma', 'UI Design', 'App Design'],
+    rate: '$50 / hr',
+    category: '平面設計',
+    completedCases: 45,
+    responseRate: 98
+  },
+  {
+    id: 't2',
+    user: { id: 'u2', name: 'Jessica Lin', avatar: 'https://picsum.photos/seed/u2/100/100', isOpenForWork: true, rating: 4.8 },
+    title: '全端工程師 (React/Node.js)',
+    bio: '熱愛解決複雜問題，擅長建立可擴展的網頁應用程式。',
+    skills: ['React', 'Node.js', 'PostgreSQL'],
+    rate: '$80 / hr',
+    category: '程式開發',
+    completedCases: 32,
+    responseRate: 95
+  },
+  {
+    id: 't3',
+    user: { id: 'u3', name: 'Mark Wu', avatar: 'https://picsum.photos/seed/u3/100/100', isOpenForWork: false, rating: 4.7 },
+    title: '專業影片剪輯與後製',
+    bio: '讓每一幀畫面都充滿故事張力。熟練使用 Premiere Pro 與 After Effects。',
+    skills: ['Premiere', 'After Effects', 'Color Grading'],
+    rate: '$45 / hr',
+    category: '影音剪輯',
+    completedCases: 120,
+    responseRate: 90
+  },
+  {
+    id: 't4',
+    user: { id: 'u4', name: 'Sophie Yang', avatar: 'https://picsum.photos/seed/u4/100/100', isOpenForWork: true, rating: 5.0 },
+    title: '創意文案與社群小編',
+    bio: '文字是有溫度的。我能為您的品牌創造獨特的聲音。',
+    skills: ['Copywriting', 'SEO', 'Social Media'],
+    rate: '$30 / hr',
+    category: '文案寫作',
+    completedCases: 68,
+    responseRate: 100
+  },
+  {
+    id: 't5',
+    user: { id: 'u5', name: 'David Chang', avatar: 'https://picsum.photos/seed/u5/100/100', isOpenForWork: true, rating: 4.6 },
+    title: '商業攝影師 & 修圖師',
+    bio: '用鏡頭捕捉產品的靈魂。專精於美食與商品攝影。',
+    skills: ['Photography', 'Lightroom', 'Retouching'],
+    rate: '$150 / 專案',
+    category: '平面設計',
+    completedCases: 25,
+    responseRate: 92
   }
 ];
 

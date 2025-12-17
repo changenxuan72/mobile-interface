@@ -31,6 +31,18 @@ export interface Job {
   postedAt: string;
 }
 
+export interface Talent {
+  id: string;
+  user: User;
+  title: string;
+  bio: string;
+  skills: string[];
+  rate: string;
+  category: string;
+  completedCases: number;
+  responseRate: number;
+}
+
 export interface Product {
   id: string;
   title: string;
