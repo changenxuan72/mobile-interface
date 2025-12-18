@@ -1,4 +1,4 @@
-import { ExploreCategory, Post, Job, Product, ChatSession, Notification, Message, Review, Talent } from './types';
+import { ExploreCategory, Post, Job, Product, ChatSession, Notification, Message, Review, Talent, Mentor } from './types';
 
 export const EXPLORE_CATEGORIES = [
   ExploreCategory.FOLLOWING,
@@ -36,6 +36,45 @@ export const MOCK_POSTS: Post[] = Array.from({ length: 20 }).map((_, i) => ({
   tags: ['Design', 'Minimal', 'UI/UX'],
   aspectRatio: ASPECTS[i % 3],
 }));
+
+export const MOCK_MENTORS: Mentor[] = [
+  {
+    id: 'm1',
+    name: 'Elijah Wang',
+    avatar: 'https://picsum.photos/seed/elijah/100/100',
+    tags: ['#報價專家', '#UI大神'],
+    bio: '專精於產品策略與高轉化率設計。',
+    rating: 5.0,
+    answerCount: 128
+  },
+  {
+    id: 'm2',
+    name: 'Sarah Wu',
+    avatar: 'https://picsum.photos/seed/sarah/100/100',
+    tags: ['#品牌故事', '#視覺傳達'],
+    bio: '讓品牌會說話，深耕視覺識別領域多年。',
+    rating: 4.9,
+    answerCount: 85
+  },
+  {
+    id: 'm3',
+    name: 'Alex Chen',
+    avatar: 'https://picsum.photos/seed/alex/100/100',
+    tags: ['#全端技術', '#架構優化'],
+    bio: '從 0 到 1 打造可擴展的技術架構。',
+    rating: 4.8,
+    answerCount: 210
+  },
+  {
+    id: 'm4',
+    name: 'Jessica Lin',
+    avatar: 'https://picsum.photos/seed/jess/100/100',
+    tags: ['#營銷策略', '#數據驅動'],
+    bio: '擅長流量變現與用戶增長實驗。',
+    rating: 5.0,
+    answerCount: 42
+  }
+];
 
 export const JOB_CATEGORIES = ["全部", "平面設計", "程式開發", "行銷", "影音剪輯", "文案寫作"];
 
@@ -80,7 +119,7 @@ export const MOCK_JOBS: Job[] = [
   {
     id: 'job-4',
     title: '短影音剪輯師 (TikTok/Reels)',
-    description: '尋找創意影片剪輯師，每月製作 10 支短影音。我們提供原始素材。必須熟悉目前的流行趨勢和節奏。',
+    description: '尋找創意影片剪輯師，每月製作 10 支短影音。我們提供原始素材。必須熟悉目前的流行趨勢 and 節奏。',
     client: { id: 'c4', name: 'Viral Studio', avatar: 'https://picsum.photos/seed/viral/100/100', isOpenForWork: false, rating: 4.2 },
     budget: '$500 / 月',
     deadline: '長期',

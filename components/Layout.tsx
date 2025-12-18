@@ -9,16 +9,18 @@ const Layout: React.FC = () => {
 
   // Simple mapping to check active path
   const isActive = (path: string) => {
-      if (path === '/') return location.pathname === '/';
-      return location.pathname.startsWith(path);
+      // Check for exact match first or if it's the root of the app section
+      if (path === '/app' && location.pathname === '/app') return true;
+      if (path !== '/app' && location.pathname.startsWith(path)) return true;
+      return false;
   };
 
   const navItems = [
-    { name: TabName.EXPLORE, icon: Compass, path: '/' },
-    { name: TabName.JOBS, icon: Briefcase, path: '/jobs' },
-    { name: TabName.MARKET, icon: ShoppingBag, path: '/market' },
-    { name: TabName.INBOX, icon: MessageCircle, path: '/inbox' },
-    { name: TabName.PROFILE, icon: User, path: '/profile' },
+    { name: TabName.EXPLORE, icon: Compass, path: '/app' },
+    { name: TabName.JOBS, icon: Briefcase, path: '/app/jobs' },
+    { name: TabName.MARKET, icon: ShoppingBag, path: '/app/market' },
+    { name: TabName.INBOX, icon: MessageCircle, path: '/app/inbox' },
+    { name: TabName.PROFILE, icon: User, path: '/app/profile' },
   ];
 
   return (

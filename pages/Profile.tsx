@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Settings, Share2, Wallet, Package, GraduationCap, BarChart3, Star, Heart, Plus, MapPin } from 'lucide-react';
 import { MOCK_POSTS, MOCK_PRODUCTS, MOCK_REVIEWS, PROFILE_USER } from '../constants';
 import PostDetailModal from '../components/PostDetailModal';
 import { Post } from '../types';
 
 const Profile: React.FC = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'portfolio' | 'products' | 'reviews'>('portfolio');
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 
@@ -12,6 +14,13 @@ const Profile: React.FC = () => {
   const handlePostClick = (post: Post) => {
     setSelectedPost(post);
   };
+
+  const featureItems = [
+    { name: '我的錢包', icon: Wallet, color: 'text-blue-600', bg: 'bg-blue-50', path: '/app/wallet' },
+    { name: '訂單管理', icon: Package, color: 'text-orange-600', bg: 'bg-orange-50', path: '/app/orders' },
+    { name: '導師計畫', icon: GraduationCap, color: 'text-purple-600', bg: 'bg-purple-50', path: '/app/mentorship' },
+    { name: '數據分析', icon: BarChart3, color: 'text-emerald-600', bg: 'bg-emerald-50', path: '/app/analytics' },
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50 pb-24">
@@ -25,7 +34,10 @@ const Profile: React.FC = () => {
                 <button className="p-2 bg-black/30 text-white rounded-full backdrop-blur-sm hover:bg-black/40 transition-colors">
                     <Share2 size={20} />
                 </button>
-                <button className="p-2 bg-black/30 text-white rounded-full backdrop-blur-sm hover:bg-black/40 transition-colors">
+                <button 
+                    onClick={() => navigate('/settings')}
+                    className="p-2 bg-black/30 text-white rounded-full backdrop-blur-sm hover:bg-black/40 transition-colors"
+                >
                     <Settings size={20} />
                 </button>
             </div>
@@ -79,17 +91,16 @@ const Profile: React.FC = () => {
 
             {/* Feature Grid */}
             <div className="grid grid-cols-4 gap-4 mb-4">
-                {[
-                    { name: '我的錢包', icon: Wallet, color: 'text-blue-600', bg: 'bg-blue-50' },
-                    { name: '訂單管理', icon: Package, color: 'text-orange-600', bg: 'bg-orange-50' },
-                    { name: '導師計畫', icon: GraduationCap, color: 'text-purple-600', bg: 'bg-purple-50' },
-                    { name: '數據分析', icon: BarChart3, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-                ].map((item) => (
-                    <button key={item.name} className="flex flex-col items-center gap-2 group">
-                        <div className={`w-12 h-12 rounded-2xl ${item.bg} flex items-center justify-center transition-transform group-hover:scale-105`}>
+                {featureItems.map((item) => (
+                    <button 
+                        key={item.name} 
+                        onClick={() => navigate(item.path)}
+                        className="flex flex-col items-center gap-2 group"
+                    >
+                        <div className={`w-12 h-12 rounded-2xl ${item.bg} flex items-center justify-center transition-transform group-hover:scale-105 shadow-sm`}>
                             <item.icon className={item.color} size={22} />
                         </div>
-                        <span className="text-xs text-gray-600">{item.name}</span>
+                        <span className="text-xs text-gray-600 font-medium">{item.name}</span>
                     </button>
                 ))}
             </div>

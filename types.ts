@@ -6,6 +6,27 @@ export interface User {
   rating?: number;
 }
 
+export interface Mentor {
+  id: string;
+  name: string;
+  avatar: string;
+  tags: string[];
+  bio: string;
+  rating: number;
+  answerCount: number;
+}
+
+export type MentorRequestType = 'portfolio_review' | 'quote_consulting';
+
+export interface MentorRequest {
+  id: string;
+  student: User;
+  type: MentorRequestType;
+  content: string;
+  time: string;
+  status: 'pending' | 'accepted' | 'declined';
+}
+
 export interface Post {
   id: string;
   title: string;
